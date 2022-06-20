@@ -44,7 +44,7 @@ FOREIGN KEY(cod_disciplina) REFERENCES disciplina(cod_disciplina),
 FOREIGN KEY(ra) REFERENCES aluno(ra),
 FOREIGN KEY(cod_avaliacao) REFERENCES avaliacao(cod_avaliacao),
 );
-SELECT * FROM avaliacao
+SELECT * FROM udf_notas_alunos()
 SELECT al.ra, al.nome, n1.nota  FROM notas n1 INNER JOIN aluno al ON n1.ra = al.ra INNER JOIN disciplina dis ON n1.cod_disciplina = dis.cod_disciplina
 --UDF para as notas da turma
 CREATE FUNCTION udf_notas_alunos()
@@ -83,9 +83,10 @@ BEGIN
 	
 	RETURN
 END
+
 SELECT al.ra, al.nome AS nome_avaliacao, dis.nome AS nome_disciplina, av.tipo, n.nota FROM aluno al, disciplina dis, avaliacao av, notas n
+
 INSERT INTO notas(ra,cod_disciplina,cod_avaliacao,nota) VALUES('1110481812005','5005-220',5,8)
-SELECT * FROM udf_notas_alunos()
 --UDF para faltas da turma
 CREATE FUNCTION udf_faltas_alunos()
 RETURNS @tabela TABLE(
@@ -121,4 +122,4 @@ BEGIN
 	RETURN
 END
 
-SELECT ra, nome_aluno, nome_disciplina, data_falta, falta FROM udf_faltas_alunos()
+SELECT * FROM udf_faltas_alunos()

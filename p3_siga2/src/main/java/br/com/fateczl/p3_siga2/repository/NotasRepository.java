@@ -10,8 +10,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import br.com.fateczl.p3_siga2.model.Notas;
+import br.com.fateczl.p3_siga2.model.NotasPK;
 
-public interface NotasRepository extends JpaRepository<Notas,String>{
+public interface NotasRepository extends JpaRepository<Notas,NotasPK>{
 	@Query(value = "INSERT INTO notas(ra,cod_disciplina,cod_avaliacao,nota) VALUES(:ra,:cod_disciplina,:cod_avaliacao,:nota)", nativeQuery = true)
 	@Modifying
 	@Transactional
