@@ -6,7 +6,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RelatorioFaltaConsumer {
-public final String HTTP_URL = "http://localhost:8080/p3_siga2/siga/falta/aluno/";
+public final String HTTP_URL = "http://localhost:8080/p3_siga2/siga/relatorio/faltas/";
 	
 	public InputStream getRelatorioFalta() throws IOException {
 		String urlFinal = HTTP_URL;
